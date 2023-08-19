@@ -1,0 +1,17 @@
+nav {
+  padding-left: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #e2e2e2;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+nav.active {
+  padding-left: 15px;
+  padding-right: 15px;
+  color: red;
+}
+
+.home {
+  margin-right: 15px;
+}
