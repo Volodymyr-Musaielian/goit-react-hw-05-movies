@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import * as API from '../services/api';
+import PropTypes from 'prop-types';
 
 import { useSearchParams } from 'react-router-dom';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { MoviesResult } from 'components/MoviesResult/MoviesResult';
 // import { Link, useLocation } from 'react-router-dom';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState(1);
@@ -52,3 +53,15 @@ export const MoviesPage = () => {
 //   const nextParams = query !== '' ? { query } : {};
 //   setSearchParams(nextParams);
 // };
+
+MoviesPage.propTypes = {
+  filteredMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+    })
+  ),
+};
+
+export default MoviesPage;

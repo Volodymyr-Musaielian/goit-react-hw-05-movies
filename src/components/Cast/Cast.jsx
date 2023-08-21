@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as API from '../../pages/services/api';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [actors, setActors] = useState([]);
 
@@ -35,3 +36,16 @@ export const Cast = () => {
     </div>
   );
 };
+
+Cast.propTypes = {
+  actors: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      profile_path: PropTypes.string,
+      character: PropTypes.number.isRequired,
+    })
+  ),
+};
+
+export default Cast;

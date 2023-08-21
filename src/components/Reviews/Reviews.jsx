@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import * as API from '../../pages/services/api';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,3 +43,15 @@ export const Reviews = () => {
     </div>
   );
 };
+
+Reviews.propTypes = {
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      author: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      content: PropTypes.string.isRequired,
+    })
+  ),
+};
+
+export default Reviews;

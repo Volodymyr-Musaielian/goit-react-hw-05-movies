@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import * as API from '../services/api';
 import { Link, useLocation } from 'react-router-dom';
 import css from './HomePage.module.css';
 
-export const HomePage = () => {
+const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
 
@@ -34,3 +35,15 @@ export const HomePage = () => {
     </>
   );
 };
+
+HomePage.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      profile_path: PropTypes.string,
+    })
+  ),
+};
+
+export default HomePage;
